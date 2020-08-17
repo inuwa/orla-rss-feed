@@ -1,0 +1,60 @@
+@import "variables";
+@import "mixins";
+@import "spacing";
+
+:host {
+    margin: 0.5rem;
+    height: 340px;
+    --max-lines: 3;
+    --line-height: 16px;
+
+    .white-font {
+        color: white;
+    }
+
+    .card {
+        width: 19rem;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+
+        &-header {
+            @include flex-row(space-between, center);
+            height: 50px;
+            background-color: var(--anchor);
+
+            &-title {
+                color: skyblue;
+                font-weight: 700;
+            }
+        }
+
+        &-image {
+            height: 150px;
+            
+            &.none {
+                @include flex-column(center, center);
+                background-color: var(--steel);
+                color: white;
+            }
+        }
+    
+        &-footer {
+            height: 120px;
+            @include flex-column(flex-start, flex-start);
+
+            &-heading {
+                color: var(--steel);
+                font-weight: 700;
+                font-size: 14px;
+                height: 50px;
+                line-height: var(--line-height);
+            }
+            
+            &-desc {
+                max-height: calc(var(--lh) * var(--max-lines));
+                overflow: hidden;
+                font-weight: 700;
+            }
+        }
+    }
+}

@@ -1,0 +1,114 @@
+@import "mixins";
+@import "spacing";
+// @import "variables";
+:host {
+    .space-between {
+        @include flex-row(space-between, center);
+    }
+
+    .flex-column-center {
+        @include flex-column(flex-start, center);
+    }
+
+    .flex-grow-1 {
+        flex-grow: 1;
+    }
+
+    .white-font {
+        color: white;
+    }
+
+    .bg-white {
+        background: white;
+    }
+
+    .red-font {
+        color: red;
+    }
+
+    .less-2rem {
+        width: calc(100% - 2rem);
+    }
+
+    .text-align-center {
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        &-sidenav {
+            flex: 1;
+        }
+    }
+
+    .sidenav {
+        @include flex-column(flex-start, flex-start);
+        height: calc(100% - 2rem);
+        width: 250px;
+        padding: 1rem;
+        background-color: var(--anchor);
+        overflow-x: hidden;
+
+        &-input {
+            width: 100%;
+
+            &-field {
+                border-radius: 12px;
+                height: 20px;
+                border: 1px solid var(--steel);
+                background-color: var(--iron);
+                font-style: italic;
+                font-size: 10px;
+            }
+        }
+
+        &-checkbox {
+            border-radius: 10px;
+            border: 1px
+        }
+
+        &-cancel {
+            @include flex-row(center, center);
+            width: 14px;
+            height: 14px;
+            border-radius: 7px;
+        }
+
+        &-hr {
+            height: 0px;
+            border: 1px solid var(--steel);
+        }
+
+        &-add-btn {
+            width: calc(100% + 8px);
+            border-radius: 14px;
+            background: skyblue;
+            color: white;
+            border: 1px solid white;
+        }
+
+        &-content {
+            @include flex-row(flex-start, flex-start);
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+    }
+
+    .header {
+        // color: white;
+        font-weight: lighter;
+    }
+
+    .container-sidenav {
+        /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+            `<body>` to be our scrolling element for mobile layouts. */
+        flex: 1 0 auto;
+    }
+}

@@ -1,0 +1,58 @@
+$interval: 5;
+$width: 0.4;
+$height: 0.25;
+
+@for $i from 1 through 20 {
+    // column widths e.g wp-5 (increments of 5%)
+    .wp-#{$i * $interval} {
+        width: percentage($i * $interval/100);
+    }
+
+    // row/column heights e.g e.g hp-5 (increments of 5%)
+    .hp-#{$i * $interval} {
+        height: percentage($i * $interval/100);
+    }
+}
+
+
+@for $i from  0 through 5 {
+    .p-#{$i} {
+        padding: #{$i * $height} + rem;
+    }
+
+    .pt-#{$i} {
+        padding-top: #{$i * $height} + rem;
+    }
+
+    .pb-#{$i} {
+        padding-bottom: #{$i * $height} + rem;
+    }
+
+    .pr-#{$i} {
+        padding-right: #{$i * $height} + rem;
+    }
+
+    .pl-#{$i} {
+        padding-left: #{$i * $height} + rem;
+    }
+
+    .m-#{$i} {
+        margin: #{$i * $height} + rem;
+    }
+
+    .mt-#{$i} {
+        margin-top: #{$i * $height} + rem;
+    }
+
+    .mb-#{$i} {
+        margin-bottom: #{$i * $height} + rem;
+    }
+
+    .mr-#{$i} {
+        margin-right: #{$i * $height} + rem;
+    }
+
+    .ml-#{$i} {
+        margin-left: #{$i * $height} + rem;
+    }
+}
