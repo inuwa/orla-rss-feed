@@ -2,7 +2,7 @@
     <mat-sidenav-container class="sidenav-container hp-100" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
             <div class="sidenav p-3 white-font">
-                <div class="p-3">
+                <div class="wp-100">
                     <h3 class="header">Content Generator</h3>
                 </div>
                 <div class="wp-100">
@@ -11,33 +11,34 @@
                             placeholder="    Filter your feeds..." />
                         <i class="fas fa-search"></i>
                     </div>
-                    <div *ngFor="let rssFeed of rssFeeds" class="space-between wp-100 mt-2 mb-2 categories">
+                    <div *ngFor="let rssFeed of rssFeedsCache" class="space-between wp-100 mt-2 mb-2 categories">
                         <span class="space-between">
-                            <span class="sidenav-checkbox">
-                                <input type="checkbox" class="mr-3" />
+                            <span class="sidenav-checkbox mr-3">
+                                <input type="checkbox" class="rss-checkbox pointer" [value]="rssFeed.feed.title" />
                             </span>
                             <div class="">{{ rssFeed.feed.title }}</div>
                         </span>
-                        <span class="bg-white sidenav-cancel">
+                        <span class="bg-white sidenav-cancel pointer" (click)="$$remove(rssFeed)">
                             <i class="fas fa-times-circle red-font"></i>
                         </span>
                     </div>
                 </div>
                 <hr class="sidenav-hr mt-4 mb-4 wp-100" />
-                <div class="wp-100 less-2rem flex-column-center ml-3">
+                <form [formGroup]="formGroup" (ngSubmit)="$$addRssFeed()" class="wp-100 less-2rem flex-column-center ml-3">
                     <p class="mt-4 text-align-center">Add new feed</p>
                     <div class="sidenav-input wp-100">
-                        <input #search type="text" (keyup)="$$search(search.value)" class="sidenav-input-field wp-100 mt-2"
-                            placeholder="  Type your feed name" />
+                        <input #name type="text" class="sidenav-input-field wp-100 mt-2" placeholder="  Type your feed name"
+                            formControlName="name" [class.no-italics]="formGroup.get('name').dirty" />
                     </div>
                     <div class="sidenav-input wp-100">
-                        <input #search type="text" (keyup)="$$search(search.value)" class="sidenav-input-field wp-100 mt-2 mb-2"
-                            placeholder=" Copy your RSS URL" />
+                        <input #urlInput type="text" class="sidenav-input-field wp-100 mt-2 mb-2" placeholder=" Copy your RSS URL"
+                            formControlName="url" [class.no-italics]="formGroup.get('url').dirty" />
                     </div>
                     <div class="wp-100">
-                        <button type="button" class="sidenav-add-btn p-1">Add Feed</button>
+                        <button type="button" class="sidenav-add-btn p-1" [disabled]="!formGroup.valid" [class.disabled]="!formGroup.valid"
+                            (click)="$$addRssFeed()">Add Feed</button>
                     </div>
-                </div>
+                </form>
             </div>
         </mat-sidenav>
 

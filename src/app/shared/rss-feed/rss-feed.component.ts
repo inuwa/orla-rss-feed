@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { RSS, Item } from 'src/app/_';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Subscription, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -24,6 +24,7 @@ export class RssFeedComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        if (!this._subcription) return;
         this._subcription.unsubscribe();
         this._subcription = null;
     }

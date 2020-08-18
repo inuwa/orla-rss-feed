@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
     declarations: [
         AppComponent
@@ -23,7 +24,8 @@ import { SharedModule } from './shared/shared.module';
         MatToolbarModule,
         MatListModule,
         HttpClientModule,
-        SharedModule
+        SharedModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
