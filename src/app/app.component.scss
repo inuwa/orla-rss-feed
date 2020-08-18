@@ -125,4 +125,34 @@
     .no-italics {
         font-style: normal;
     }
+
+    .rss-checkbox {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
+    
+    .rss-checkbox:checked {
+        background-color: blue;
+        &::after {
+            border: 2px solid #fff;
+            border-top: none;
+            border-right: none;
+            content: "";
+            height: 2px;
+            opacity: 1;
+            left: 5px;
+            top: 6px;
+            position: absolute;
+            transform: rotate(-45deg);
+            width: 6px;
+        }
+    }
 }

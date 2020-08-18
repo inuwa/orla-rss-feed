@@ -12,12 +12,12 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <div *ngFor="let rssFeed of rssFeedsCache" class="space-between wp-100 mt-2 mb-2 categories">
-                        <span class="space-between">
-                            <span class="sidenav-checkbox mr-3">
+                        <div class="space-between">
+                            <div class="sidenav-checkbox mr-3">
                                 <input type="checkbox" class="rss-checkbox pointer" [value]="rssFeed.feed.title" />
-                            </span>
+                            </div>
                             <div class="">{{ rssFeed.feed.title }}</div>
-                        </span>
+                        </div>
                         <span class="bg-white sidenav-cancel pointer" (click)="$$remove(rssFeed)">
                             <i class="fas fa-times-circle red-font"></i>
                         </span>
