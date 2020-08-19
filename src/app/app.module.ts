@@ -11,6 +11,8 @@ import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
     declarations: [
         AppComponent
@@ -25,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatListModule,
         HttpClientModule,
         SharedModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [],
     bootstrap: [AppComponent]
