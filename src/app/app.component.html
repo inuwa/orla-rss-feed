@@ -1,6 +1,12 @@
 <div class="container">
-    <mat-sidenav-container class="sidenav-container hp-100" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+    <mat-sidenav-container class="sidenav-container hp-100">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            [opened]="!mobileQuery.matches">
+            <div *ngIf="mobileQuery.matches" class="flex-row-end p-3 bg-anchor">
+                <div class="close-btn pointer" (click)="snav.toggle()">
+                    X
+                </div>
+            </div>
             <div class="sidenav p-3 white-font">
                 <div class="wp-100">
                     <h3 class="header">Content Generator</h3>
@@ -43,9 +49,10 @@
         </mat-sidenav>
 
         <mat-sidenav-content>
-            <button mat-icon-button (click)="snav.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
+            <div (click)="snav.toggle()" class="color-anchor">
+                <mat-icon *ngIf="!snav.opened">menu</mat-icon>
+                <mat-icon *ngIf="snav.opened">close</mat-icon>
+            </div>
             <div class="wp-100" class="sidenav-content">
                 <ng-container *ngFor="let rssFeed of rssFeeds">
                     <ng-container *ngFor="let item of rssFeed.items">
