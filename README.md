@@ -17,5 +17,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 - Created the UI for the RSS Feeds
 - Dynamically listed all articles from a set of feeds. 
 - Allows the user to add, remove and search feeds.
-- App can be build for production and run on a server using `npm run build:prod`
-- Application is responsive on small screens.
+- App can be built for production and run on a server using `npm run build:prod`
+- go to the dist/orla-rss-feed and run test server like `python -m SimpleHTTPServer 8080` then open the application on `localhost:8080` to test the service worker.
+- Application is responsive on small screens with sidenav over on mobile screens too.
+- Picture URLs are error handled for 404s.
