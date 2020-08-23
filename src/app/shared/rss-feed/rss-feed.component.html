@@ -4,9 +4,9 @@
         <span class="card-header-title">{{ rssFeed.feed.title }}</span>
         <span class="white-font"><small>{{ item.pubDate | date: 'MMM dd yyyy'}} | {{ item.pubDate | date: 'hh:mm'}}</small></span>
     </div>
-    <div class="card-image wp-100" [class.none]="!urlIsCorrect">
-        <img *ngIf="urlIsCorrect" class="wp-100 hp-100" [src]="item.enclosure.link" />
-        <h2 *ngIf="!urlIsCorrect">{{ rssFeed.feed.title }}</h2>
+    <div class="card-image wp-100" [class.none]="imageLoadingError">
+        <img *ngIf="!imageLoadingError" class="wp-100 hp-100" [src]="item.enclosure.link" (error)="imageLoadingError = true" />
+        <h2 *ngIf="imageLoadingError">{{ rssFeed.feed.title }}</h2>
     </div>
     <div class="card-footer pl-3 pr-3 pb-3">
         <div class="card-footer-heading">
